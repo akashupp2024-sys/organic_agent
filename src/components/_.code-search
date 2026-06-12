@@ -1,0 +1,393 @@
+# Query: $
+# ContextLines: 1
+
+110 results - 28 files
+
+DEPLOYMENT.md:
+  130          with:
+  131:           vercel-token: ${{ secrets.VERCEL_TOKEN }}
+  132:           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+  133:           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+  134            production: true
+
+.github\workflows\deploy.yml:
+  20        
+  21:       - name: Setup Node.js ${{ matrix.node-version }}
+  22          uses: actions/setup-node@v4
+  23          with:
+  24:           node-version: ${{ matrix.node-version }}
+  25            cache: 'npm'
+
+  47          with:
+  48:           vercel-token: ${{ secrets.VERCEL_TOKEN }}
+  49:           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+  50:           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+  51            production: true
+
+backend\server.js:
+  97  app.listen(PORT, () => {
+  98:   console.log(`✓ Server running on port ${PORT}`);
+  99:   console.log(`✓ Environment: ${process.env.NODE_ENV || 'development'}`);
+  100  });
+
+backend\config\db.js:
+  5      const conn = await mongoose.connect(process.env.MONGO_URI);
+  6:     console.log(`✓ MongoDB Connected: ${conn.connection.host}`);
+  7      return conn;
+  8    } catch (error) {
+  9:     console.error(`✗ MongoDB Connection Error: ${error.message}`);
+  10      process.exit(1);
+
+backend\config\env.js:
+  43    if (errors.length > 0) {
+  44:     throw new Error(`Environment configuration error:\n- ${errors.join('\n- ')}`);
+  45    }
+
+backend\controllers\orderController.js:
+  31        if (!product) {
+  32:         return res.status(404).json({ error: `Product ${item.productId} not found` });
+  33        }
+
+  35        if (!product.inStock) {
+  36:         return res.status(400).json({ error: `Product ${product.name} is out of stock` });
+  37        }
+
+backend\controllers\paymentController.js:
+   58        currency: 'INR',
+   59:       receipt: `receipt_${orderId}`,
+   60        notes: {
+
+  106      // Verify signature using HMAC SHA256
+  107:     const body = `${razorpayOrderId}|${razorpayPaymentId}`;
+  108      const expectedSignature = crypto
+
+backend\controllers\productController.js:
+  17      if (search) {
+  18:       filter.$or = [
+  19:         { name: { $regex: search, $options: 'i' } },
+  20:         { description: { $regex: search, $options: 'i' } },
+  21        ];
+
+backend\models\Order.js:
+  36      required: [true, 'Phone number is required'],
+  37:     match: [/^\d{10}$/, 'Please provide a valid 10-digit phone number'],
+  38    },
+
+  53      required: [true, 'Pincode is required'],
+  54:     match: [/^\d{6}$/, 'Please provide a valid 6-digit pincode'],
+  55    },
+
+backend\models\User.js:
+  15      match: [
+  16:       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+  17        'Please provide a valid email',
+
+backend\routes\orderRoutes.js:
+  24    body('shippingAddress.phone')
+  25:     .matches(/^\d{10}$/)
+  26      .withMessage('Phone must be a 10-digit number'),
+
+  39    body('shippingAddress.pincode')
+  40:     .matches(/^\d{6}$/)
+  41      .withMessage('Pincode must be a 6-digit number'),
+
+backend\routes\uploadRoutes.js:
+  22        .replace(/[^a-z0-9.-]/g, '');
+  23:     cb(null, `${Date.now()}-${safeName}`);
+  24    },
+
+  50  
+  51:   const baseUrl = `${req.protocol}://${req.get('host')}`;
+  52:   const fileUrl = `${baseUrl}/uploads/${req.file.filename}`;
+  53  
+
+backend\scripts\seedProducts.js:
+  22  
+  23:   const existingProducts = await Product.find({ name: { $in: seedProducts.map((product) => product.name) } })
+  24      .select('name')
+
+  35    console.log(
+  36:     `Seed complete. Inserted ${productsToInsert.length} product(s). Database now has ${total} product(s).`
+  37    );
+
+  41    .catch((error) => {
+  42:     console.error(`Seed failed: ${error.message}`);
+  43      process.exitCode = 1;
+
+src\api\axios.js:
+   3  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+   4: const normalizedApiUrl = apiUrl.replace(/\/+$/, '');
+   5: const baseURL = normalizedApiUrl.endsWith('/api') ? normalizedApiUrl : `${normalizedApiUrl}/api`;
+   6  
+
+  19      if (token) {
+  20:       config.headers.Authorization = `Bearer ${token}`;
+  21      }
+
+src\api\orderAPI.js:
+  26      try {
+  27:       const response = await axiosInstance.get(`/orders/${orderId}`);
+  28        return response.data;
+
+  46      try {
+  47:       const response = await axiosInstance.put(`/orders/${orderId}/status`, statusData);
+  48        return response.data;
+
+src\api\productAPI.js:
+  16      try {
+  17:       const response = await axiosInstance.get(`/products/${productId}`);
+  18        return response.data;
+
+  26      try {
+  27:       const response = await axiosInstance.post(`/products/${productId}/review`, reviewData);
+  28        return response.data;
+
+  46      try {
+  47:       const response = await axiosInstance.put(`/products/${productId}`, productData);
+  48        return response.data;
+
+  56      try {
+  57:       const response = await axiosInstance.delete(`/products/${productId}`);
+  58        return response.data;
+
+src\components\Footer.jsx:
+  84                  <li key={category}>
+  85:                   <Link to={`/shop?category=${encodeURIComponent(category)}`} className="text-sm text-slate-600 transition hover:text-brand hover:font-semibold">
+  86                      {category}
+
+src\components\Navbar.jsx:
+  100                >
+  101:                 Logout{user?.name ? `, ${user.name.split(' ')[0]}` : ''}
+  102                </button>
+
+src\components\ProductCard.jsx:
+  15        <div className="relative overflow-hidden bg-slate-100">
+  16:         <Link to={`/product/${productId}`}>
+  17            <img
+
+  32            <div>
+  33:             <Link to={`/product/${productId}`} className="text-lg font-semibold text-slate-900 transition hover:text-brand">
+  34                {product.name}
+
+  37            </div>
+  38:           <div className={`rounded-full px-3 py-1 text-xs font-semibold ${product.inStock ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>
+  39              {product.inStock ? 'In stock' : 'Out of stock'}
+
+  44            {Array.from({ length: fullStars }).map((_, index) => (
+  45:             <svg key={`star-full-${index}`} viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+  46                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+
+  55            {Array.from({ length: emptyStars }).map((_, index) => (
+  56:             <svg key={`star-empty-${index}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 text-slate-300">
+  57                <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+
+src\pages\AdminDashboard.jsx:
+  27  function formatMoney(value) {
+  28:   return `₹${Number(value || 0).toFixed(2)}`;
+  29  }
+
+src\pages\Cart.jsx:
+   44                        <p className="mt-2 text-sm uppercase tracking-[0.24em] text-brand-dark">{item.category}</p>
+   45:                       <p className="mt-3 text-sm text-slate-600">₹{item.price.toFixed(2)} each</p>
+   46                      </div>
+
+   78                      <p className="text-sm text-slate-500">Item subtotal</p>
+   79:                     <p className="mt-1 text-xl font-semibold text-slate-900">₹{(item.price * item.qty).toFixed(2)}</p>
+   80                    </div>
+
+   94                  <span>Subtotal</span>
+   95:                 <span>₹{cartTotal.toFixed(2)}</span>
+   96                </div>
+
+   98                  <span>Delivery</span>
+   99:                 <span>₹{deliveryCharge.toFixed(2)}</span>
+  100                </div>
+
+  102                  <span>Total</span>
+  103:                 <span>₹{totalAmount.toFixed(2)}</span>
+  104                </div>
+
+src\pages\Checkout.jsx:
+   40        errors.phone = 'Phone number is required';
+   41:     } else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) {
+   42        errors.phone = 'Please enter a valid 10-digit phone number';
+
+   50        errors.pincode = 'Pincode is required';
+   51:     } else if (!/^\d{6}$/.test(formData.pincode)) {
+   52        errors.pincode = 'Please enter a valid 6-digit pincode';
+
+  184          if (verifiedOrder) {
+  185:           setSuccessMessage(`Order #${verifiedOrder._id} placed successfully!`);
+  186            setOrderId(verifiedOrder._id);
+
+  189            setTimeout(() => {
+  190:             navigate(`/my-orders/${verifiedOrder._id}`);
+  191            }, 2000);
+
+  202      rzp.on('payment.failed', (response) => {
+  203:       setErrorMessage(`Payment failed: ${response.error.description}`);
+  204      });
+
+  226            // For COD, just show success
+  227:           setSuccessMessage(`Order #${backendOrder._id} placed successfully!`);
+  228            setOrderId(backendOrder._id);
+
+  231            setTimeout(() => {
+  232:             navigate(`/my-orders/${backendOrder._id}`);
+  233            }, 2000);
+
+  330                      placeholder="John Doe"
+  331:                     className={`w-full rounded-3xl border px-4 py-3 text-sm outline-none transition ${
+  332                        formErrors.name
+
+  350                      placeholder="9999999999"
+  351:                     className={`w-full rounded-3xl border px-4 py-3 text-sm outline-none transition ${
+  352                        formErrors.phone
+
+  371                    rows={3}
+  372:                   className={`w-full rounded-3xl border px-4 py-3 text-sm outline-none transition resize-none ${
+  373                      formErrors.address
+
+  392                      placeholder="110001"
+  393:                     className={`w-full rounded-3xl border px-4 py-3 text-sm outline-none transition ${
+  394                        formErrors.pincode
+
+  412                      placeholder="New Delhi"
+  413:                     className={`w-full rounded-3xl border px-4 py-3 text-sm outline-none transition ${
+  414                        formErrors.city
+
+  433                    placeholder="Delhi"
+  434:                   className={`w-full rounded-3xl border px-4 py-3 text-sm outline-none transition ${
+  435                      formErrors.state
+
+  506                  </div>
+  507:                 <p className="font-semibold text-slate-900">₹{(item.price * item.qty).toFixed(2)}</p>
+  508                </div>
+
+  514                <span>Subtotal</span>
+  515:               <span>₹{cartTotal.toFixed(2)}</span>
+  516              </div>
+
+  518                <span>Delivery Charge</span>
+  519:               <span>₹{deliveryCharge.toFixed(2)}</span>
+  520              </div>
+
+  522                <span>Total</span>
+  523:               <span>₹{totalAmount.toFixed(2)}</span>
+  524              </div>
+
+  529              disabled={isLoading}
+  530:             className={`w-full rounded-full px-6 py-4 text-sm font-semibold text-white transition ${
+  531                isLoading
+
+src\pages\Contact.jsx:
+   22        errors.email = 'Email is required';
+   23:     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+   24        errors.email = 'Please enter a valid email';
+
+   93                  placeholder="Your full name"
+   94:                 className={`w-full rounded-3xl border px-5 py-3 text-sm outline-none transition ${
+   95                    formErrors.name
+
+  113                  placeholder="your.email@example.com"
+  114:                 className={`w-full rounded-3xl border px-5 py-3 text-sm outline-none transition ${
+  115                    formErrors.email
+
+  133                  placeholder="How can we help?"
+  134:                 className={`w-full rounded-3xl border px-5 py-3 text-sm outline-none transition ${
+  135                    formErrors.subject
+
+  153                  rows={5}
+  154:                 className={`w-full rounded-3xl border px-5 py-3 text-sm outline-none transition resize-none ${
+  155                    formErrors.message
+
+src\pages\Home.jsx:
+  102                key={category.key}
+  103:               to={`/shop?category=${encodeURIComponent(category.key)}`}
+  104                className="group rounded-3xl border border-slate-200 bg-slate-50 p-6 text-center transition hover:-translate-y-1 hover:border-brand hover:bg-brand/5"
+
+  164            <div className="overflow-hidden">
+  165:             <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+  166                {testimonials.map((testimonial) => (
+
+  222                  onClick={() => goToSlide(index)}
+  223:                 className={`h-3 rounded-full transition ${index === currentSlide ? 'w-8 bg-brand' : 'w-3 bg-slate-300 hover:bg-slate-400'}`}
+  224:                 aria-label={`Go to slide ${index + 1}`}
+  225                />
+
+src\pages\OrderDetail.jsx:
+   27    return (
+   28:     <span className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${classes[tone]}`}>
+   29        {children}
+
+  128                    <p className="mt-1 text-sm text-slate-500">
+  129:                     Qty {item.quantity} x ₹{Number(item.price || 0).toFixed(2)}
+  130                    </p>
+
+  132                  <p className="font-semibold text-slate-900">
+  133:                   ₹{Number((item.price || 0) * (item.quantity || 0)).toFixed(2)}
+  134                  </p>
+
+  169                  <span>Items</span>
+  170:                 <span className="font-semibold text-slate-900">₹{Number(order.itemsPrice || 0).toFixed(2)}</span>
+  171                </div>
+
+  173                  <span>Delivery</span>
+  174:                 <span className="font-semibold text-slate-900">₹{Number(order.deliveryCharge || 0).toFixed(2)}</span>
+  175                </div>
+
+  177                  <span className="font-semibold text-slate-900">Total</span>
+  178:                 <span className="font-bold text-slate-900">₹{Number(order.totalPrice || 0).toFixed(2)}</span>
+  179                </div>
+
+src\pages\Orders.jsx:
+   22    const [firstItem, ...restItems] = items;
+   23:   const firstSummary = `${firstItem.name} x ${firstItem.quantity}`;
+   24  
+
+   28  
+   29:   return `${firstSummary} + ${restItems.length} more`;
+   30  }
+
+   39    return (
+   40:     <span className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${classes[tone]}`}>
+   41        {children}
+
+  101              key={order._id}
+  102:             to={`/my-orders/${order._id}`}
+  103              className="block rounded-3xl bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+
+  111                  <p className="text-lg font-semibold text-slate-900">
+  112:                   ₹{Number(order.totalPrice || 0).toFixed(2)}
+  113                  </p>
+
+src\pages\ProductDetail.jsx:
+  173                    <div key={index} className="overflow-hidden rounded-3xl bg-slate-100">
+  174:                     <img src={src} alt={`${product.name} ${index + 1}`} className="h-24 w-full object-cover" />
+  175                    </div>
+
+  192                <div className="space-y-2">
+  193:                 <p className="text-3xl font-bold text-slate-900">₹{product.price.toFixed(2)}</p>
+  194:                 <p className="text-sm text-slate-500 line-through">₹{product.originalPrice.toFixed(2)}</p>
+  195                </div>
+
+  262                  key={productItem.id}
+  263:                 to={`/product/${productItem.id}`}
+  264                  className="flex items-center gap-4 rounded-3xl border border-slate-200 p-4 transition hover:border-brand hover:bg-brand/5"
+
+  268                    <p className="font-semibold text-slate-900">{productItem.name}</p>
+  269:                   <p className="text-sm text-slate-500">₹{productItem.price.toFixed(2)}</p>
+  270                  </div>
+
+src\pages\Shop.jsx:
+  182                  onClick={() => updateQuery({ category: '' })}
+  183:                 className={`w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${
+  184                    query.category === ''
+
+  195                    onClick={() => updateQuery({ category: item })}
+  196:                   className={`w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${
+  197                      query.category === item
+
+  305                      onClick={() => updateQuery({ page: pageNumber })}
+  306:                     className={`h-10 min-w-10 rounded-full px-3 text-sm font-semibold transition ${
+  307                        query.page === pageNumber
