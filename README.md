@@ -83,65 +83,10 @@ organic-agent/
 - Node.js (v14 or higher)
 - npm (v6 or higher)
 
-### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/organic-store.git
-   cd organic-store
    ```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
 
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-   The app will be available at `http://localhost:5173`
-
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
-
-5. **Preview production build**
-   ```bash
-   npm run preview
-   ```
-
-## 🎨 Customization
-
-### Theme Colors
-Edit `tailwind.config.js` to customize brand colors:
-```javascript
-colors: {
-  brand: '#4CAF50',        // Primary green
-  'brand-light': '#A5D6A7',
-  'brand-dark': '#2E7D32',
-  accent: '#F5E9D1',       // Beige
-  surface: '#FFFFFF'
-}
-```
-
-### Add Products
-Edit `src/data/products.js` to add or modify products:
-```javascript
-{
-  id: 'p13',
-  name: 'Product Name',
-  category: 'Category',
-  price: 9.99,
-  originalPrice: 12.99,
-  discount: 23,
-  rating: 4.8,
-  image: 'image-url',
-  description: 'Product description',
-  inStock: true
-}
-```
 
 ## 📊 Product Categories
 - Vegetables
@@ -151,29 +96,6 @@ Edit `src/data/products.js` to add or modify products:
 - Bakery (empty - ready for products)
 - Beverages (empty - ready for products)
 
-## 🔗 Deployment
-
-### Vercel Deployment
-This project is configured for automatic deployment on Vercel.
-
-1. **Push to GitHub**
-   ```bash
-   git push origin main
-   ```
-
-2. **Connect to Vercel**
-   - Go to [vercel.com](https://vercel.com)
-   - Click "New Project"
-   - Import your GitHub repository
-   - Vercel will automatically detect Vite and configure build settings
-   - Deploy!
-
-3. **Automatic Deployments**
-   - Every push to the main branch triggers a new deployment
-   - Preview deployments for pull requests
-
-### Environment Variables (if needed)
-Add any environment variables in Vercel project settings under "Environment Variables"
 
 ## 📝 Features Implemented
 
@@ -225,24 +147,6 @@ Contributions are welcome! Please follow these steps:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Team
-
-Built by [Your Name/Team Name]
-
-## 📧 Support
-
-For support, email hello@organicstore.com or visit our website.
-
-## 🙏 Acknowledgments
-
-- Images from [Unsplash](https://unsplash.com)
-- Icons and UI inspiration from modern e-commerce platforms
-- Community feedback and suggestions
-
----
-
-**Live Demo**: [https://organicstore.vercel.app](https://organicstore.vercel.app)
-
-**Repository**: [https://github.com/yourusername/organic-store](https://github.com/yourusername/organic-store)
+Built by [Akash pandey]
 
 Made with 💚 for organic, sustainable living.

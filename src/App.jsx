@@ -1,3 +1,7 @@
+import ChatBotButton from './components/ChatBotButton';
+
+
+
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -43,6 +47,7 @@ function App() {
         </div>
       </main>
       <Footer />
+      <ChatBotButton />
     </div>
   );
 }
