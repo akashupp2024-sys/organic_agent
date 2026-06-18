@@ -1,5 +1,7 @@
 import ChatBotButton from './components/ChatBotButton';
 
+import ForestBackground from "./components/ForestBackground";
+
 
 
 import { Routes, Route } from 'react-router-dom';
@@ -22,8 +24,13 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-br from-primary via-secondary to-[#0B2A1F] text-textLight">
+  <div className="relative flex min-h-screen flex-col bg-gradient-to-br from-primary via-secondary to-[#0B2A1F] text-textLight overflow-hidden">
+    
+    <ForestBackground />
+
+    <div className="relative z-10 flex min-h-screen flex-col">
       <Navbar />
+
       <main className="flex-1">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
           <Routes>
@@ -46,10 +53,12 @@ function App() {
           </Routes>
         </div>
       </main>
+
       <Footer />
       <ChatBotButton />
     </div>
-  );
+  </div>
+);
 }
 
 export default App;

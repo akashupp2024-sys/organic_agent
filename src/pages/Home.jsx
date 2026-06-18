@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { items } from '../data/sampleData';
 import { products } from '../data/products';
-import { testimonials } from '../data/testimonials';
+import testimonials from '../data/testimonials';
 
 const categories = [
   { key: 'Vegetables', icon: '🥬' },
@@ -165,11 +165,17 @@ function Home() {
             <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
               {testimonials.map((testimonial) => (
                 <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
-                  <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
+                  <div className="rounded-3xl border border-slate-200 bg-white p-8">
                     <div className="flex items-center gap-4">
                       <img src={testimonial.avatar} alt={testimonial.name} className="h-16 w-16 rounded-full object-cover" />
                       <div>
-                        <h3 className="text-lg font-semibold text-slate-900">{testimonial.name}</h3>
+  <h3 className="text-lg font-semibold text-slate-900">
+    {testimonial.name}
+  </h3>
+
+  <p className="text-sm text-slate-500">
+    {testimonial.location}
+  </p>
                         <div className="mt-2 flex gap-1 text-amber-500">
                           {Array.from({ length: 5 }).map((_, index) => (
                             <svg
@@ -186,7 +192,9 @@ function Home() {
                         </div>
                       </div>
                     </div>
-                    <p className="mt-6 text-slate-600 leading-7">"{testimonial.text}"</p>
+                    <p className="mt-6 text-green-900 font-semibold leading-7">
+  "{testimonial.review}"
+</p>
                   </div>
                 </div>
               ))}

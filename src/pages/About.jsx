@@ -1,30 +1,50 @@
+import akashPhoto from '../assets/founder.jpg';
+import shivamphoto from '../assets/shivam.jpeg';
+import Ananyaphoto from '../assets/ananya.jpg';
+import priyaphoto from '../assets/priya.jpg';
+import Rahulphoto from '../assets/rahul.jpg';
+import harshitPhoto from '../assets/Harshit.jpeg';
+
+
 function About() {
   const teamMembers = [
-    {
-      id: 1,
-      name: 'Priya Sharma',
-      role: 'Founder & CEO',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80',
-    },
-    {
-      id: 2,
-      name: 'Rajesh Patel',
-      role: 'Head of Supply Chain',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
-    },
-    {
-      id: 3,
-      name: 'Anjali Gupta',
-      role: 'Community Manager',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80',
-    },
-    {
-      id: 4,
-      name: 'Vikram Singh',
-      role: 'Quality Assurance',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
-    },
-  ];
+  {
+    id: 1,
+    name: 'Akash Pandey',
+    role: 'Founder & CEO',
+    image: akashPhoto,
+  },
+  {
+  id: 6,
+  name: 'Harshit Pandey',
+  role: 'Co-Founder',
+  image: harshitPhoto,
+},
+  {
+    id: 2,
+    name: 'Priya Sharma',
+    role: 'Head of Supply Chain',
+    image: priyaphoto,
+  },
+  {
+    id: 3,
+    name: 'Rahul Verma',
+    role: 'Community Manager',
+    image: Rahulphoto,
+  },
+  {
+  id: 5,
+  name: 'Shivam Maurya',
+  role: 'Investor',
+  image: shivamphoto,
+},
+  {
+    id: 4,
+    name: 'Ananya Gupta',
+    role: 'Quality Assurance',
+    image: Ananyaphoto,
+  },
+];
 
   const values = [
     {
@@ -55,7 +75,7 @@ function About() {
         <div className="relative z-10 text-center">
           <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl">About Us</h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-white/90">
-            Bringing fresh, organic goodness from farms to your table since 2020.
+            Empowering Indian farmers and delivering 100% organic products across India.
           </p>
         </div>
       </div>
@@ -65,10 +85,10 @@ function About() {
           <div>
             <h2 className="text-3xl font-bold text-slate-900">Our Story</h2>
             <p className="mt-4 text-slate-600 leading-7">
-              OrganicStore was born from a simple mission: to make organic, fresh produce accessible to everyone. Founded in 2020 by a group of passionate farmers and entrepreneurs, we saw an opportunity to bridge the gap between sustainable agriculture and conscious consumers.
+              Organic Agent was founded with a vision to bring fresh, chemical-free, and organically grown products directly from Indian farms to households across the country. We work closely with trusted farmers who follow sustainable and eco-friendly farming practices.
             </p>
             <p className="mt-4 text-slate-600 leading-7">
-              Starting with just 5 local farms, we've grown to partner with over 50 certified organic producers across the region. Our commitment to quality, sustainability, and fair trade practices has made us a trusted name in the organic market.
+              Starting with a small network of organic farmers, we have expanded our reach across multiple states in India. Our goal is to support local agriculture while ensuring customers receive healthy and nutritious food at affordable prices.
             </p>
           </div>
 
@@ -76,16 +96,16 @@ function About() {
             <h3 className="font-semibold text-slate-900 mb-4">By The Numbers</h3>
             <div className="grid grid-cols-3 gap-4">
               <div className="text-center">
-                <p className="text-3xl font-bold text-brand">50+</p>
-                <p className="text-sm text-slate-600">Partner Farms</p>
+                <p className="text-3xl font-bold text-green-700">25+</p>
+<p className="text-sm font-medium text-black">Partner Farms</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-brand">10K+</p>
-                <p className="text-sm text-slate-600">Happy Customers</p>
+                <p className="text-3xl font-bold text-green-700">5K+</p>
+                <p className="text-sm font-medium text-black">Happy Customers</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-brand">100%</p>
-                <p className="text-sm text-slate-600">Organic Certified</p>
+                <p className="text-3xl font-bold text-green-700">100%</p>
+                <p className="text-sm font-medium text-black">Organic Certified</p>
               </div>
             </div>
           </div>
@@ -100,13 +120,13 @@ function About() {
         </div>
       </div>
 
-      <div className="space-y-6 rounded-[2rem] bg-white p-8 shadow-sm">
+      <div className="space-y-6 rounded-[2rem] bg-white p-8 shadow-sm text-slate-900">
         <div>
           <p className="text-sm uppercase tracking-[0.35em] text-brand">Our Values</p>
           <h2 className="mt-2 text-3xl font-bold text-slate-900">What We Stand For</h2>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {values.map((value, index) => (
             <div key={index} className="space-y-3 rounded-3xl border border-slate-200 bg-slate-50 p-6">
               <div className="text-4xl">{value.icon}</div>
@@ -123,18 +143,54 @@ function About() {
           <h2 className="mt-2 text-3xl font-bold text-slate-900">Meet Our Leadership</h2>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {teamMembers.map((member) => (
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+  {teamMembers.map((member) => (
             <div key={member.id} className="text-center rounded-3xl overflow-hidden border border-slate-200 bg-slate-50 shadow-sm hover:shadow-md transition">
               <img src={member.image} alt={member.name} className="h-64 w-full object-cover" />
               <div className="p-6">
                 <h3 className="text-lg font-semibold text-slate-900">{member.name}</h3>
-                <p className="mt-2 text-sm text-brand font-medium uppercase tracking-[0.24em]">{member.role}</p>
+                <p className="mt-2 text-sm text-green-700 font-semibold">
+  {member.role}
+</p>
               </div>
             </div>
           ))}
         </div>
       </div>
+      {/* CUSTOMER REVIEWS SECTION HERE */}
+<div className="space-y-6 rounded-[2rem] bg-white p-8 shadow-sm">
+  <div>
+    <p className="text-sm uppercase tracking-[0.35em] text-brand">
+      Testimonials
+    </p>
+    <h2 className="mt-2 text-3xl font-bold text-slate-900">
+      What Our Customers Say
+    </h2>
+  </div>
+
+  <div className="grid gap-6 md:grid-cols-3">
+    <div className="rounded-3xl bg-slate-50 p-6">
+      <p>"The vegetables are always fresh and delivered on time."</p>
+      <h4 className="mt-4 font-semibold">
+        Priya Sharma, Delhi ⭐⭐⭐⭐⭐
+      </h4>
+    </div>
+
+    <div className="rounded-3xl bg-slate-50 p-6">
+      <p>"Best organic fruits I've ordered online. Highly recommended."</p>
+      <h4 className="mt-4 font-semibold">
+        Rahul Verma, Mumbai ⭐⭐⭐⭐⭐
+      </h4>
+    </div>
+
+    <div className="rounded-3xl bg-slate-50 p-6">
+      <p>"Excellent quality and great customer support."</p>
+      <h4 className="mt-4 font-semibold">
+        Ananya Patel, Ahmedabad ⭐⭐⭐⭐⭐
+      </h4>
+    </div>
+  </div>
+</div>
 
       <div className="rounded-[2rem] bg-gradient-to-r from-brand/10 to-brand-dark/10 border border-brand/20 p-8 sm:p-12">
         <div className="text-center space-y-4">

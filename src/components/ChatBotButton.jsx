@@ -1,65 +1,148 @@
-import sproutBot from '../assets/sprout-bot.png';
-
 import { useState } from 'react';
-import botImage from '../assets/sprout-bot.png';
+import sproutBot from '../assets/sprout-bot.png';
+import axios from 'axios';
 
 function ChatBotButton() {
   const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([
+    {
+      sender: 'bot',
+      text: '👋 Hello! I am Sprout AI. Ask me anything about organic products.',
+    },
+  ]);
+
+  const sendMessage = async () => {
+    if (!message.trim()) return;
+
+    const userMessage = {
+      sender: 'user',
+      text: message,
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+
+    try {
+      const res = await axios.post('http://localhost:5000/api/chat', {
+        message,
+      });
+
+      const botReply = {
+        sender: 'bot',
+        text: res.data.reply,
+      };
+
+      setMessages((prev) => [...prev, botReply]);
+    } catch (error) {
+      console.log(error);
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: 'bot',
+          text: '⚠️ Sprout AI is currently unavailable.',
+        },
+      ]);
+    }
+
+    setMessage('');
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      sendMessage();
+    }
+  };
 
   return (
     <>
-      {/* Floating Button */}
+      {/* Floating Circle Button */}
       <button
-  onClick={() => setOpen(!open)}
-  className="fixed bottom-6 right-6 z-50 h-24 w-24 overflow-hidden rounded-full border-4 border-white bg-white shadow-2xl transition hover:scale-105"
->
-  <img
-    src={sproutBot}
-    alt="Sprout AI"
-    className="h-full w-full object-cover"
-  />
-</button>
+        onClick={() => setOpen(true)}
+        className="fixed bottom-6 right-6 z-50 h-24 w-24 overflow-hidden rounded-full border-4 border-white bg-white shadow-2xl transition hover:scale-105"
+      >
+        <img
+          src={sproutBot}
+          alt="Sprout AI"
+          className="h-full w-full object-cover"
+        />
+      </button>
 
-      {/* Chat Popup */}
+      {/* Fullscreen Chat */}
       {open && (
-        <div className="fixed bottom-24 right-6 z-50 w-80 rounded-3xl border border-slate-200 bg-white p-5 shadow-2xl">
-          <div className="flex items-center gap-3 border-b pb-4">
-            <img
-              src={botImage}
-              alt="Bot"
-              className="h-12 w-12 rounded-full"
-            />
+        <div className="fixed inset-0 z-50 flex flex-col bg-white">
 
-            <div>
-              <h2 className="text-2xl font-bold text-slate-800">
-  Sprout 🌱
-</h2>
+          {/* Header */}
+          <div className="flex items-center justify-between border-b bg-green-600 p-4 text-white shadow">
+            <div className="flex items-center gap-3">
+              <img
+                src={sproutBot}
+                alt="Sprout"
+                className="h-14 w-14 rounded-full border-2 border-white"
+              />
 
-<p className="text-base font-medium text-slate-600">
-  Your Organic Shopping Assistant
-</p>
+              <div>
+                <h2 className="text-xl font-bold">
+                  Sprout 🌱
+                </h2>
+
+                <p className="text-sm">
+                  Organic Shopping Assistant
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setOpen(false)}
+              className="rounded-full bg-white px-4 py-2 text-sm font-bold text-green-700"
+            >
+              Close
+            </button>
+          </div>
+
+          {/* Chat Messages */}
+          <div className="flex-1 overflow-y-auto bg-slate-100 p-4">
+            <div className="mx-auto max-w-3xl space-y-4">
+
+              {messages.map((msg, index) => (
+                <div
+                  key={index}
+                  className={`max-w-xl rounded-2xl px-4 py-3 text-sm shadow ${
+                    msg.sender === 'user'
+                      ? 'ml-auto bg-green-600 text-white'
+                      : 'bg-white text-black'
+                  }`}
+                >
+                  {msg.text}
+                </div>
+              ))}
+
             </div>
           </div>
 
-          <div className="mt-4 space-y-3">
-            <div className="rounded-2xl bg-slate-100 p-3 text-sm text-slate-700">
-              👋 Hello! Welcome to OrganicStore.
-            </div>
+          {/* Input Area */}
+          <div className="border-t bg-white p-4">
+            <div className="mx-auto flex max-w-3xl gap-3">
 
-            <div className="rounded-2xl bg-green-100 p-3 text-sm text-slate-700">
-              Ask me about:
-              <ul className="mt-2 list-disc pl-5">
-                <li>Organic products</li>
-                <li>Prices & discounts</li>
-                <li>Healthy recommendations</li>
-                <li>Order tracking</li>
-              </ul>
+              <input
+                type="text"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                onKeyDown={handleKeyPress}
+                placeholder="Ask Sprout AI something..."
+                className="flex-1 rounded-full border border-gray-300 px-5 py-4 text-black outline-none focus:border-green-500"
+              />
+
+              <button
+                onClick={sendMessage}
+                className="rounded-full bg-green-600 px-8 py-4 font-semibold text-white transition hover:bg-green-700"
+              >
+                Send
+              </button>
+
             </div>
           </div>
 
-          <button className="mt-5 w-full rounded-full bg-green-600 py-3 text-sm font-semibold text-white transition hover:bg-green-700">
-            Start Chat
-          </button>
         </div>
       )}
     </>

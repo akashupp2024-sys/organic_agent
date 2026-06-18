@@ -8,6 +8,7 @@ const connectDB = require('./config/db');
 const { validateServerEnv } = require('./config/env');
 const errorHandler = require('./middleware/errorHandler');
 const sanitizeRequest = require('./middleware/sanitizeRequest');
+const chatRoutes = require('./routes/chatRoutes');
 
 validateServerEnv();
 
@@ -76,6 +77,7 @@ app.use('/api/upload', require('./routes/uploadRoutes'));
 // app.use('/api/cart', require('./routes/cartRoutes'));
 // app.use('/api/orders', require('./routes/orderRoutes'));
 // app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/chat', chatRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
