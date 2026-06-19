@@ -202,26 +202,38 @@ function Home() {
           </div>
 
           <button
-            type="button"
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white shadow-lg transition hover:bg-brand-dark"
-            aria-label="Previous slide"
-          >
-            <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" stroke="currentColor" className="h-5 w-5">
-              <path d="M15 19L8 12M8 12L15 5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+  type="button"
+  onClick={prevSlide}
+  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-green-700 text-white shadow-lg border-2 border-white hover:bg-green-800"
+  aria-label="Previous slide"
+>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    strokeWidth="3"
+    stroke="currentColor"
+    className="h-6 w-6"
+  >
+    <path d="M15 19L8 12M8 12L15 5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+</button>
 
           <button
-            type="button"
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white shadow-lg transition hover:bg-brand-dark"
-            aria-label="Next slide"
-          >
-            <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" stroke="currentColor" className="h-5 w-5">
-              <path d="M9 19L16 12M16 12L9 5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+  type="button"
+  onClick={nextSlide}
+  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-green-700 text-white shadow-lg border-2 border-white hover:bg-green-800"
+  aria-label="Next slide"
+>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    strokeWidth="3"
+    stroke="currentColor"
+    className="h-6 w-6"
+  >
+    <path d="M9 19L16 12M16 12L9 5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+</button>
 
           <div className="mt-8 flex justify-center gap-2">
             {testimonials.map((_, index) => (

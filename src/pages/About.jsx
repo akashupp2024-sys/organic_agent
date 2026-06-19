@@ -111,13 +111,13 @@ function About() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] overflow-hidden shadow-lg">
-          <img
-            src="https://images.unsplash.com/photo-1488459716781-6818a6aa9d7d?auto=format&fit=crop&w=600&q=80"
-            alt="Organic farming"
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <div className="rounded-[2rem] overflow-hidden shadow-lg min-h-[400px] bg-white">
+  <img
+    src="https://images.unsplash.com/photo-1488459716781-6818a6aa9d7d?auto=format&fit=crop&w=800&q=80"
+    alt="Organic farming"
+    className="w-full h-[400px] object-cover"
+  />
+</div>
       </div>
 
       <div className="space-y-6 rounded-[2rem] bg-white p-8 shadow-sm text-slate-900">
@@ -170,36 +170,52 @@ function About() {
 
   <div className="grid gap-6 md:grid-cols-3">
     <div className="rounded-3xl bg-slate-50 p-6">
-      <p>"The vegetables are always fresh and delivered on time."</p>
-      <h4 className="mt-4 font-semibold">
-        Priya Sharma, Delhi ⭐⭐⭐⭐⭐
-      </h4>
-    </div>
+  <p className="text-green-900 font-medium">
+    "The vegetables are always fresh and delivered on time."
+  </p>
+  <h4 className="mt-4 font-semibold text-slate-900">
+    Priya Sharma, Delhi ⭐⭐⭐⭐⭐
+  </h4>
+</div>
 
-    <div className="rounded-3xl bg-slate-50 p-6">
-      <p>"Best organic fruits I've ordered online. Highly recommended."</p>
-      <h4 className="mt-4 font-semibold">
-        Rahul Verma, Mumbai ⭐⭐⭐⭐⭐
-      </h4>
-    </div>
+<div className="rounded-3xl bg-slate-50 p-6">
+  <p className="text-green-900 font-medium">
+    "Best organic fruits I've ordered online. Highly recommended."
+  </p>
+  <h4 className="mt-4 font-semibold text-slate-900">
+    Rahul Verma, Mumbai ⭐⭐⭐⭐
+  </h4>
+</div>
 
-    <div className="rounded-3xl bg-slate-50 p-6">
-      <p>"Excellent quality and great customer support."</p>
-      <h4 className="mt-4 font-semibold">
-        Ananya Patel, Ahmedabad ⭐⭐⭐⭐⭐
-      </h4>
-    </div>
+<div className="rounded-3xl bg-slate-50 p-6">
+  <p className="text-green-900 font-medium">
+    "Excellent quality and great customer support."
+  </p>
+  <h4 className="mt-4 font-semibold text-slate-900">
+    Ananya Patel, Ahmedabad ⭐⭐⭐⭐
+  </h4>
+</div>
   </div>
 </div>
 
       <div className="rounded-[2rem] bg-gradient-to-r from-brand/10 to-brand-dark/10 border border-brand/20 p-8 sm:p-12">
-        <div className="text-center space-y-4">
-          <h2 className="text-3xl font-bold text-slate-900">Our Mission</h2>
-          <p className="max-w-3xl mx-auto text-lg text-slate-600 leading-8">
-            To revolutionize the way people access organic, fresh produce by connecting conscious consumers with sustainable farmers. We believe that every purchase is a vote for the kind of world we want to create—one where health, sustainability, and community thrive together.
-          </p>
-        </div>
-      </div>
+  <div className="text-center space-y-4">
+
+    <h2 className="text-3xl font-bold text-white">
+  Our Mission & Vision
+</h2>
+
+    <p className="max-w-3xl mx-auto text-lg text-white leading-8">
+      To revolutionize the way people access organic, fresh produce by connecting conscious consumers with sustainable farmers. We believe that every purchase is a vote for the kind of world we want to create—one where health, sustainability, and community thrive together.
+    </p>
+
+    <p className="mt-4 text-white">
+      We aim to become India's most trusted organic marketplace,
+      empowering farmers and delivering healthy food to every home.
+    </p>
+
+  </div>
+</div>
     </section>
   );
 }
