@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import sproutBot from '../assets/sprout-bot.png';
+import sproutBot from '../assets/Sprout-bot.png';
 import axios from 'axios';
 
 function ChatBotButton() {
