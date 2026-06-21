@@ -113,7 +113,7 @@ function About() {
 
         <div className="rounded-[2rem] overflow-hidden shadow-lg min-h-[400px] bg-white">
   <img
-    src="https://images.unsplash.com/photo-1488459716781-6818a6aa9d7d?auto=format&fit=crop&w=800&q=80"
+    src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1600&auto=format&fit=crop&q=80"
     alt="Organic farming"
     className="w-full h-[400px] object-cover"
   />
