@@ -26,12 +26,13 @@ export default {
         primary: '#0F3D2E',
         secondary: '#14532D',
         accent: '#C96A1B',
+
+        brand: '#16A34A',
+        'brand-dark': '#15803D',
+
         card: '#4B5563',
         textLight: '#F8FAFC',
         success: '#4CAF50',
-      },
-      fontFamily: {
-        sans: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
     },
   },

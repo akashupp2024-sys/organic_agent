@@ -26,35 +26,35 @@ export default function ForestBackground() {
     const particles = Array.from({ length: 70 }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
-      size: Math.random() * 3 + 1,
-      speed: Math.random() * 0.5 + 0.2,
+      size: Math.random() * 4 + 0.5,
+      speed: Math.random() * 0.25 + 0.08,
     }));
 
     const animate = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
 
-      const gradient = ctx.createLinearGradient(0, 0, 0, height);
-
-      gradient.addColorStop(0, "#0a1f06");
-      gradient.addColorStop(0.5, "#173404");
-      gradient.addColorStop(1, "#1f4006");
-
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, width, height);
+      // Clear previous frame only
+ctx.clearRect(0, 0, width, height);
 
       particles.forEach((p) => {
         p.y -= p.speed;
 
-        if (p.y < 0) {
-          p.y = height;
-          p.x = Math.random() * width;
-        }
+       if (p.y < -10) {
+  p.y = height + 10;
+  p.x = Math.random() * width;
+}
 
         ctx.beginPath();
-        ctx.fillStyle = "rgba(250,238,218,0.5)";
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
+
+ctx.shadowBlur = 20;
+ctx.shadowColor = "rgba(255,255,255,0.9)";
+
+ctx.fillStyle = "rgba(255,255,255,0.9)";
+ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+ctx.fill();
+
+ctx.shadowBlur = 0;
       });
 
       animationFrameId = requestAnimationFrame(animate);
@@ -74,7 +74,7 @@ export default function ForestBackground() {
     <canvas
       ref={canvasRef}
       style={{
-        position: "absolute",
+        position: "fixed",
         inset: 0,
         width: "100%",
         height: "100%",

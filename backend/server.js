@@ -15,11 +15,12 @@ validateServerEnv();
 const app = express();
 app.set('trust proxy', 1);
 
-const configuredFrontendOrigin =
-  process.env.NODE_ENV === 'production'
-    ? process.env.VERCEL_FRONTEND_URL || process.env.FRONTEND_URL || process.env.CLIENT_ORIGIN
-    : process.env.FRONTEND_URL || process.env.CLIENT_ORIGIN || 'http://localhost:5173';
-const allowedOrigins = [configuredFrontendOrigin].filter(Boolean);
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.VERCEL_FRONTEND_URL,
+  process.env.FRONTEND_URL,
+  process.env.CLIENT_ORIGIN,
+].filter(Boolean);
 
 if (process.env.NODE_ENV === 'production' && allowedOrigins.length === 0) {
   throw new Error('Set FRONTEND_URL or VERCEL_FRONTEND_URL before starting the API in production.');
