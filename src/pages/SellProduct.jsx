@@ -72,6 +72,59 @@ function SellProduct() {
           rows="4"
         />
 
+        <input
+  type="file"
+  className="w-full rounded-lg border p-3 text-black"
+/>
+
+<input
+  type="text"
+  name="brand"
+  placeholder="Brand Name"
+  onChange={handleChange}
+  className="w-full rounded-lg border p-3 text-black"
+/>
+
+<textarea
+  name="description"
+  placeholder="Product Description"
+  onChange={handleChange}
+  className="w-full rounded-lg border p-3 text-black"
+  rows="4"
+/>
+
+<input
+  type="text"
+  name="manufacturer"
+  placeholder="Manufacturer Name"
+  onChange={handleChange}
+  className="w-full rounded-lg border p-3 text-black"
+/>
+
+<input
+  type="text"
+  name="country"
+  placeholder="Country Of Origin"
+  onChange={handleChange}
+  className="w-full rounded-lg border p-3 text-black"
+/>
+
+<input
+  type="text"
+  name="gst"
+  placeholder="GST Number"
+  onChange={handleChange}
+  className="w-full rounded-lg border p-3 text-black"
+/>
+
+<input
+  type="text"
+  name="warranty"
+  placeholder="Warranty Information"
+  onChange={handleChange}
+  className="w-full rounded-lg border p-3 text-black"
+/>
+
         <button
           type="submit"
           className="rounded-lg bg-green-600 px-6 py-3 text-white hover:bg-green-700"
