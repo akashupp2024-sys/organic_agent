@@ -1,25 +1,85 @@
 import { useState } from "react";
 
 function SellProduct() {
-  const [productName, setProductName] = useState("");
+  const [formData, setFormData] = useState({
+    productName: "",
+    category: "",
+    price: "",
+    stock: "",
+    pickupAddress: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(formData);
+
+    alert("Product Submitted Successfully!");
+  };
 
   return (
     <div className="rounded-3xl bg-white p-8 shadow-lg">
-      <h1 className="text-3xl font-bold text-black mb-6">
+      <h1 className="mb-6 text-3xl font-bold text-black">
         Sell Your Product
       </h1>
 
-      <input
-        type="text"
-        placeholder="Product Name"
-        value={productName}
-        onChange={(e) => setProductName(e.target.value)}
-        className="w-full border border-gray-300 rounded-lg p-3 text-black"
-      />
+      <form onSubmit={handleSubmit} className="space-y-4">
 
-      <button className="mt-4 bg-green-600 text-white px-6 py-3 rounded-lg">
-        Submit
-      </button>
+        <input
+          type="text"
+          name="productName"
+          placeholder="Product Name"
+          onChange={handleChange}
+          className="w-full rounded-lg border p-3 text-black"
+        />
+
+        <input
+          type="text"
+          name="category"
+          placeholder="Category"
+          onChange={handleChange}
+          className="w-full rounded-lg border p-3 text-black"
+        />
+
+        <input
+          type="number"
+          name="price"
+          placeholder="Price"
+          onChange={handleChange}
+          className="w-full rounded-lg border p-3 text-black"
+        />
+
+        <input
+          type="number"
+          name="stock"
+          placeholder="Stock Quantity"
+          onChange={handleChange}
+          className="w-full rounded-lg border p-3 text-black"
+        />
+
+        <textarea
+          name="pickupAddress"
+          placeholder="Pickup Address"
+          onChange={handleChange}
+          className="w-full rounded-lg border p-3 text-black"
+          rows="4"
+        />
+
+        <button
+          type="submit"
+          className="rounded-lg bg-green-600 px-6 py-3 text-white hover:bg-green-700"
+        >
+          Submit Product
+        </button>
+
+      </form>
     </div>
   );
 }
