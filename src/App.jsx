@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import SellProduct from './pages/SellProduct';
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -118,6 +119,11 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
+
+              <Route
+  path="/sell-product"
+  element={<ProtectedRoute><SellProduct /></ProtectedRoute>}
+/>
             </Routes>
 
           </div>
